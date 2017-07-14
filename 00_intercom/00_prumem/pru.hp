@@ -1,0 +1,51 @@
+;; -*- mode: asm -*-
+
+#define PRU0_CTRL  0x00022000
+#define PRU1_CTRL  0x00024000
+#define CONTROL	   0x000
+#define STATUS	   0x004
+#define WAKEUP_EN  0x008
+#define CYCLE	   0x00c
+#define STALL	   0x010
+#define CTBIR0	   0x020
+#define CTBIR1	   0x024
+#define CTPPR0	   0x028
+#define CTPPR1	   0x02c
+
+	
+#define ADC_MEMMAP	   0x44e0d000
+#define ADC_CTRL		0x040
+#define ADC_STAT		0x044
+#define ADC_RANGE		0x048
+#define ADC_CLKDIV		0x04c
+#define ADC_MISC		0x050
+#define ADC_STEPENABLE		0x054
+#define ADC_IDLECONFIG		0x058
+#define ADC_STEPCONFIG1		0x064
+#define ADC_STEPDEELAY1		0x068
+/* This repeats until STEPDELAY16, at 0x0e0 */
+
+#define ADC_FIFO0COUNT		0x0e4
+#define ADC_FIFO0THRESHOLD	0x0e8
+#define ADC_FIFO1COUNT		0x0f0
+#define ADC_FIFO1THRESHOLD	0x0f4
+
+#define ADC_FIFO0DATA		0x100
+#define ADC_FIFO1DATA		0x200
+
+/* GPIO */
+#define GPIO_OFS	   0x100
+#define GPIO_BANK0	   (0x44E07000 + GPIO_OFS)
+#define GPIO_BANK1	   (0x4804C000 + GPIO_OFS)
+#define GPIO_BANK2	   (0x481AC000 + GPIO_OFS)
+#define GPIO_BANK3	   (0x481AE000 + GPIO_OFS)
+
+#define GPIO_OE		   (0x134 - GPIO_OFS)
+#define GPIO_DATAIN	   (0x138 - GPIO_OFS)
+#define GPIO_DATAOUT	   (0x13c - GPIO_OFS)
+#define GPIO_CLEARDATA	   (0x190 - GPIO_OFS)
+#define GPIO_SETDATA	   (0x194 - GPIO_OFS)
+
+.macro nop
+        mov     r0,r0
+.endm
